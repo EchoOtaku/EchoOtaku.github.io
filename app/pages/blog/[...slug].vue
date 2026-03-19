@@ -17,6 +17,7 @@ useSeoMeta({
 
 <template>
   <article>
+    <UiReadingProgress />
     <NuxtLink
       to="/blog"
       class="inline-flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors mb-10"

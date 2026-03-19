@@ -26,29 +26,16 @@ const { data: posts } = await useAsyncData('home-posts', () =>
         最新文章
       </h2>
 
-      <div v-if="posts?.length" class="space-y-8">
-        <article v-for="post in posts" :key="post.path">
-          <NuxtLink :to="post.path" class="group block">
-            <time class="text-xs text-zinc-400 dark:text-zinc-500">
-              {{ new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }) }}
-            </time>
-            <h3 class="mt-1 text-lg font-semibold group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-              {{ post.title }}
-            </h3>
-            <p v-if="post.description" class="mt-1 text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
-              {{ post.description }}
-            </p>
-            <div v-if="post.tags?.length" class="mt-2 flex gap-2 flex-wrap">
-              <span
-                v-for="tag in post.tags"
-                :key="tag"
-                class="text-xs px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </NuxtLink>
-        </article>
+      <div v-if="posts?.length">
+        <BlogPostCard
+          v-for="post in posts"
+          :key="post.path"
+          :title="post.title"
+          :path="post.path"
+          :date="post.date"
+          :tags="post.tags"
+          :description="post.description"
+        />
       </div>
 
       <p v-else class="text-sm text-zinc-400 dark:text-zinc-500">

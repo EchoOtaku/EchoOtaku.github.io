@@ -12,15 +12,23 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
+
   colorMode: {
     classSuffix: '',
   },
 
   content: {
-    highlight: {
-      theme: {
-        default: 'github-light',
-        dark: 'github-dark',
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: 'github-light',
+            dark: 'github-dark',
+          },
+        },
       },
     },
   },
