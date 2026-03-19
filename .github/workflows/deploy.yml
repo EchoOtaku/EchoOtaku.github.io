@@ -42,6 +42,10 @@ jobs:
       - name: Generate static site
         run: pnpm generate
 
+      # GitHub Pages 对未知路径返回 404.html，用 200.html 作为 SPA 兜底
+      - name: Create SPA fallback for GitHub Pages
+        run: cp .output/public/200.html .output/public/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

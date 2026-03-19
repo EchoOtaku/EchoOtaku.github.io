@@ -16,6 +16,13 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
   },
 
+  nitro: {
+    prerender: {
+      // 预渲染个别路由失败时不中断整个构建（中文路由兜底）
+      failOnError: false,
+    },
+  },
+
   colorMode: {
     classSuffix: '',
   },

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const route = useRoute('/tags/[tag]')
-const tag = route.params.tag
+const route = useRoute()
+const tag = decodeURIComponent(String(route.params.tag ?? ''))
 
-useSeoMeta({ title: () => `#${tag} · EchoOtakuBlog` })
+useSeoMeta({ title: `#${tag} · EchoOtakuBlog` })
 
 const { data: posts } = await useAsyncData(`tag-${tag}`, async () => {
   const all = await queryCollection('blog')

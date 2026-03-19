@@ -27,7 +27,7 @@ defineProps<{
             <NuxtLink
               v-for="tag in tags"
               :key="tag"
-              :to="`/tags/${tag}`"
+              :to="`/tags/${encodeURIComponent(tag)}`"
               class="text-xs px-1.5 py-0.5 rounded bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 hover:bg-violet-100 dark:hover:bg-violet-900/50 transition-colors"
               @click.stop
             >
