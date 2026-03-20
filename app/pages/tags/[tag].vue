@@ -8,6 +8,7 @@ const { data: posts } = await useAsyncData(`tag-${tag}`, async () => {
   const all = await queryCollection('blog')
     .where('draft', '=', false)
     .order('date', 'DESC')
+    .select('title', 'path', 'date', 'tags')
     .all()
   return all.filter(p => p.tags?.includes(tag))
 })

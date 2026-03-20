@@ -28,13 +28,14 @@ useSeoMeta({
 
     <header class="mb-10">
       <div v-if="post?.tags?.length" class="flex gap-2 flex-wrap mb-4">
-        <span
+        <NuxtLink
           v-for="tag in post.tags"
           :key="tag"
-          class="text-xs px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400"
+          :to="`/tags/${encodeURIComponent(tag)}`"
+          class="text-xs px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 hover:bg-violet-100 dark:hover:bg-violet-900/50 transition-colors"
         >
-          {{ tag }}
-        </span>
+          #{{ tag }}
+        </NuxtLink>
       </div>
       <h1 class="text-3xl font-bold leading-tight">{{ post?.title }}</h1>
       <time v-if="post?.date" class="mt-3 block text-sm text-zinc-400 dark:text-zinc-500">
