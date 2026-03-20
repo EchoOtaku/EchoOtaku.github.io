@@ -1,15 +1,22 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
   modules: [
-    '@nuxtjs/seo',        // 必须在 @nuxt/content 之前
+    '@nuxtjs/seo',
     '@nuxt/content',
     '@nuxt/icon',
     '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  css: ['~/assets/css/main.css'],
 
   // ——— 站点基础信息 ———
   site: {
@@ -39,20 +46,35 @@ export default defineNuxtConfig({
     zeroRuntime: true,
   },
 
-  // ——— OG Image：暂禁用（nuxt-og-image v6 需要 Tailwind v4）———
+  // ——— OG Image（Tailwind v4 升级后启用）———
   ogImage: {
-    enabled: false,
+    enabled: true,
+    zeroRuntime: true,
   },
-
-  css: ['~/assets/css/main.css'],
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap',
+        },
+      ],
+    },
   },
 
   nitro: {
     prerender: {
-      // 预渲染路由失败时不中断构建（中文路由兜底）
       failOnError: false,
     },
   },

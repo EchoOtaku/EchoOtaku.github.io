@@ -1,17 +1,117 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ===== Dark mode（class-based，匹配 @nuxtjs/color-mode）===== */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== 设计 Token ===== */
+@theme {
+  /* 字体 */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-sans: 'Noto Sans SC', system-ui, sans-serif;
+
+  /* 主色调：violet */
+  --color-violet-50:  oklch(97%   0.02  290);
+  --color-violet-100: oklch(93%   0.05  290);
+  --color-violet-200: oklch(87%   0.09  290);
+  --color-violet-300: oklch(79%   0.13  290);
+  --color-violet-400: oklch(70%   0.17  290);
+  --color-violet-500: oklch(61%   0.22  290);
+  --color-violet-600: oklch(52%   0.24  290);
+  --color-violet-700: oklch(44%   0.22  290);
+  --color-violet-800: oklch(36%   0.18  290);
+  --color-violet-900: oklch(28%   0.14  290);
+  --color-violet-950: oklch(19%   0.10  290);
+
+  /* 动画 */
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.3s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* ===== 基础样式 ===== */
+@layer base {
+  :root {
+    --color-bg:      255 255 255;
+    --color-surface: 250 250 250;
+  }
+
+  .dark {
+    --color-bg:      9  9  15;
+    --color-surface: 15 15 23;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  /* 选中文字颜色 */
+  ::selection {
+    background-color: oklch(52% 0.24 290 / 20%);
+    color: oklch(52% 0.24 290);
+  }
+  .dark ::selection {
+    background-color: oklch(70% 0.17 290 / 25%);
+    color: oklch(87% 0.09 290);
+  }
+
+  /* 滚动条（webkit）*/
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(70% 0 0 / 25%);
+    border-radius: 3px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: oklch(40% 0 0 / 40%);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(52% 0.24 290 / 50%);
+  }
+}
 
 /* ===== Page Transitions ===== */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .page-enter-from {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(8px);
 }
 .page-leave-to {
   opacity: 0;
   transform: translateY(-4px);
+}
+
+/* ===== Splash fade-out ===== */
+.splash-leave-active  { transition: opacity 0.5s ease; }
+.splash-leave-to      { opacity: 0; }
+.splash-enter-active  { transition: opacity 0.3s ease; }
+.splash-enter-from    { opacity: 0; }
+
+/* ===== Prose 自定义 ===== */
+@layer utilities {
+  .prose-blog {
+    --tw-prose-links: oklch(52% 0.24 290);
+    --tw-prose-headings: oklch(15% 0.02 290);
+  }
+  .dark .prose-blog {
+    --tw-prose-links: oklch(70% 0.17 290);
+    --tw-prose-headings: oklch(96% 0.01 290);
+  }
 }
