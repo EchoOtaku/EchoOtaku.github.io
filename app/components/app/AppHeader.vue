@@ -7,27 +7,27 @@ const links = [
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
-    <div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
+  <header class="sticky top-0 z-50 border-b border-zinc-100 dark:border-zinc-800/80 bg-white/85 dark:bg-[#09090f]/85 backdrop-blur-md">
+    <div class="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
       <NuxtLink
         to="/"
-        class="font-bold text-lg text-violet-600 dark:text-violet-400 hover:opacity-80 transition-opacity"
+        class="font-display font-bold text-lg tracking-tight text-zinc-900 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
       >
-        EchoOtaku
+        Echo<span class="text-violet-600 dark:text-violet-400">Otaku</span>
       </NuxtLink>
 
-      <nav class="flex items-center gap-1">
+      <nav class="flex items-center gap-0.5">
         <NuxtLink
           v-for="link in links"
           :key="link.to"
           :to="link.to"
-          class="px-3 py-1.5 rounded-md text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          active-class="text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/50"
+          class="relative px-3 py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          active-class="!text-violet-600 dark:!text-violet-400"
         >
           {{ link.label }}
         </NuxtLink>
 
-        <div class="ml-2 pl-2 border-l border-zinc-200 dark:border-zinc-800">
+        <div class="ml-1 pl-3 border-l border-zinc-100 dark:border-zinc-800">
           <AppThemeToggle />
         </div>
       </nav>

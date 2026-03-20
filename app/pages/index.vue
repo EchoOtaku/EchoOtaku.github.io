@@ -21,17 +21,21 @@ const { data: posts } = await useAsyncData('home-posts', () =>
 <template>
   <div>
     <!-- Hero -->
-    <section class="py-10 mb-12 border-b border-zinc-100 dark:border-zinc-800">
-      <p class="text-sm font-medium text-violet-600 dark:text-violet-400 mb-2">你好，我是</p>
-      <h1 class="text-3xl font-bold mb-4">EchoOtaku</h1>
-      <p class="text-zinc-500 dark:text-zinc-400 text-lg leading-relaxed">
-        记录技术探索与二次元感悟的个人博客。写代码，追番，偶尔写点什么。
+    <section class="pt-2 pb-14 mb-2">
+      <p class="text-xs font-medium tracking-widest uppercase text-violet-500 dark:text-violet-400 mb-4 opacity-80">
+        你好，欢迎来到
+      </p>
+      <h1 class="font-display text-4xl font-bold tracking-tight mb-5 text-zinc-900 dark:text-zinc-50">
+        Echo<span class="text-violet-600 dark:text-violet-400">Otaku</span><span class="text-zinc-300 dark:text-zinc-600">Blog</span>
+      </h1>
+      <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
+        记录技术探索与二次元感悟。写代码，追番，偶尔写点什么。
       </p>
     </section>
 
     <!-- Recent posts -->
     <section>
-      <h2 class="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-6">
+      <h2 class="text-xs font-medium tracking-widest uppercase text-zinc-400 dark:text-zinc-500 mb-6">
         最新文章
       </h2>
 
@@ -47,16 +51,17 @@ const { data: posts } = await useAsyncData('home-posts', () =>
         />
       </div>
 
-      <p v-else class="text-sm text-zinc-400 dark:text-zinc-500">
+      <p v-else class="text-sm text-zinc-400 dark:text-zinc-500 py-4">
         暂无文章，快去写第一篇吧 ✍️
       </p>
 
       <NuxtLink
         v-if="posts?.length"
         to="/blog"
-        class="inline-block mt-8 text-sm text-violet-600 dark:text-violet-400 hover:underline"
+        class="inline-flex items-center gap-1.5 mt-10 text-sm text-zinc-400 dark:text-zinc-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
       >
-        查看全部文章 →
+        查看全部文章
+        <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
       </NuxtLink>
     </section>
   </div>

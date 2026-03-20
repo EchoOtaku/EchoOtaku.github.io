@@ -34,27 +34,36 @@ useSchemaOrg([
 <template>
   <article>
     <UiReadingProgress />
+
     <NuxtLink
       to="/blog"
-      class="inline-flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors mb-10"
+      class="inline-flex items-center gap-1.5 text-sm text-zinc-400 dark:text-zinc-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors mb-12"
     >
       <Icon name="lucide:arrow-left" class="w-4 h-4" />
-      返回文章列表
+      全部文章
     </NuxtLink>
 
-    <header class="mb-10">
-      <div v-if="post?.tags?.length" class="flex gap-2 flex-wrap mb-4">
+    <header class="mb-12">
+      <div v-if="post?.tags?.length" class="flex gap-2 flex-wrap mb-5">
         <NuxtLink
           v-for="tag in post.tags"
           :key="tag"
           :to="`/tags/${encodeURIComponent(tag)}`"
-          class="text-xs px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 hover:bg-violet-100 dark:hover:bg-violet-900/50 transition-colors"
+          class="text-xs px-2.5 py-0.5 rounded-full border border-violet-200 dark:border-violet-800/60 text-violet-600/80 dark:text-violet-400/80 hover:border-violet-400 dark:hover:border-violet-600 hover:text-violet-700 dark:hover:text-violet-300 transition-colors"
         >
           #{{ tag }}
         </NuxtLink>
       </div>
-      <h1 class="text-3xl font-bold leading-tight">{{ post?.title }}</h1>
-      <time v-if="post?.date" class="mt-3 block text-sm text-zinc-400 dark:text-zinc-500">
+
+      <h1 class="font-display text-3xl font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50">
+        {{ post?.title }}
+      </h1>
+
+      <time
+        v-if="post?.date"
+        class="mt-4 block text-sm text-zinc-400 dark:text-zinc-500"
+        :datetime="String(post.date)"
+      >
         {{ new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }) }}
       </time>
     </header>
@@ -62,7 +71,7 @@ useSchemaOrg([
     <ContentRenderer
       v-if="post"
       :value="post"
-      class="prose prose-zinc dark:prose-invert max-w-none prose-a:text-violet-600 dark:prose-a:text-violet-400"
+      class="prose prose-zinc dark:prose-invert max-w-none prose-a:text-violet-600 dark:prose-a:text-violet-400 prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight"
     />
   </article>
 </template>
