@@ -12,7 +12,23 @@ if (!post.value) {
 useSeoMeta({
   title: computed(() => `${post.value?.title} · EchoOtakuBlog`),
   description: computed(() => post.value?.description),
+  ogTitle: computed(() => post.value?.title),
+  ogDescription: computed(() => post.value?.description),
+  ogImage: 'https://echotaku.github.io/og-image.svg',
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  twitterTitle: computed(() => post.value?.title),
+  twitterDescription: computed(() => post.value?.description),
 })
+
+useSchemaOrg([
+  defineArticle({
+    headline: computed(() => post.value?.title ?? ''),
+    description: computed(() => post.value?.description),
+    datePublished: computed(() => post.value?.date ? new Date(post.value.date).toISOString() : undefined),
+    image: 'https://echotaku.github.io/og-image.svg',
+  }),
+])
 </script>
 
 <template>

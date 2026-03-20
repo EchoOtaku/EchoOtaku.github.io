@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f0a1e"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#7c3aed"/>
+  <!-- Hex grid background (decorative) -->
+  <g opacity="0.06" fill="none" stroke="#4af5ff" stroke-width="0.8">
+    <polygon points="100,80 131,60 163,80 163,120 131,140 100,120"/>
+    <polygon points="163,80 194,60 226,80 226,120 194,140 163,120"/>
+    <polygon points="226,80 257,60 289,80 289,120 257,140 226,120"/>
+    <polygon points="131,140 163,120 194,140 194,180 163,200 131,180"/>
+    <polygon points="1037,80 1068,60 1100,80 1100,120 1068,140 1037,120"/>
+    <polygon points="1068,140 1100,120 1131,140 1131,180 1100,200 1068,180"/>
+  </g>
+  <!-- Logo area -->
+  <rect x="80" y="80" width="6" height="40" fill="#7c3aed" rx="3"/>
+  <text x="96" y="108" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#a78bfa">EchoOtakuBlog</text>
+  <!-- Main text -->
+  <text x="80" y="340" font-family="'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="72" font-weight="800" fill="#f8fafc">EchoOtaku</text>
+  <text x="80" y="420" font-family="'Segoe UI', 'Microsoft YaHei', sans-serif" font-size="28" fill="#94a3b8">记录技术探索与二次元感悟的个人博客</text>
+  <!-- Bottom decoration -->
+  <text x="80" y="560" font-family="'Segoe UI', sans-serif" font-size="18" fill="#475569">技术 · 二次元 · 生活</text>
+  <text x="1120" y="560" font-family="'Segoe UI', sans-serif" font-size="18" fill="#475569" text-anchor="end">echotaku.github.io</text>
+</svg>

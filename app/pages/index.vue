@@ -1,4 +1,13 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'EchoOtakuBlog',
+  description: '记录技术探索与二次元感悟的个人博客。写代码，追番，偶尔写点什么。',
+  ogTitle: 'EchoOtakuBlog',
+  ogDescription: '记录技术探索与二次元感悟的个人博客。写代码，追番，偶尔写点什么。',
+  ogImage: 'https://echotaku.github.io/og-image.svg',
+  twitterCard: 'summary_large_image',
+})
+
 const { data: posts } = await useAsyncData('home-posts', () =>
   queryCollection('blog')
     .where('draft', '=', false)
