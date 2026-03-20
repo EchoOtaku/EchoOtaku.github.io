@@ -25,7 +25,7 @@ const { data: posts } = await useAsyncData('home-posts', () =>
       <p class="text-xs font-medium tracking-widest uppercase text-violet-500 dark:text-violet-400 mb-4 opacity-80">
         你好，欢迎来到
       </p>
-      <h1 class="font-display text-4xl font-bold tracking-tight mb-5 text-zinc-900 dark:text-zinc-50">
+      <h1 class="font-display text-4xl font-bold tracking-tight leading-normal mb-5 text-zinc-900 dark:text-zinc-50">
         Echo<span class="text-violet-600 dark:text-violet-400">Otaku</span><span class="text-zinc-300 dark:text-zinc-600">Blog</span>
       </h1>
       <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
